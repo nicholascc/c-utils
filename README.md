@@ -1,6 +1,6 @@
 # c-utils
 
-A set of utility single-header-file libraries I use in my C projects.
+A set of small single-header-file libraries I use for my C projects.
 
 ### integer.h
 
