@@ -4,7 +4,7 @@ A set of small single-header-file libraries I use for my C projects.
 
 ### integer.h
 
-Definitions for basic integer types: `u8`, `u16`, `u32`, `u64`, `i8`, `i16`, `i32`, and `i64`.
+Definitions for basic signed and unsigned integer types: `u8`, `u16`, `u32`, `u64`, `s8`, `s16`, `s32`, and `s64`.
 
 ### darray.h
 
