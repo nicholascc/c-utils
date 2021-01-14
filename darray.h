@@ -13,7 +13,7 @@ typedef struct ARRAY_NAME { \
   TYPE *data; \
 } ARRAY_NAME; \
  \
-ARRAY_NAME initialize_##ARRAY_NAME(u64 reserved) { \
+ARRAY_NAME init_##ARRAY_NAME(u64 reserved) { \
   assert(reserved % 2 == 0 && "reserve size must be a multiple of 2"); \
   ARRAY_NAME r; \
   r.reserved = reserved; \
