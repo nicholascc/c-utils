@@ -6,16 +6,16 @@
 
 #include "integer.h"
 
-#define GENERATE_DARRAY_TYPE(TYPE,TYPE_NAME) \
-typedef struct darray_##TYPE_NAME { \
+#define GENERATE_DARRAY_TYPE(TYPE,ARRAY_NAME) \
+typedef struct ARRAY_NAME { \
   u64 reserved; \
   u64 length; \
   TYPE *data; \
-} darray_##TYPE_NAME; \
+} ARRAY_NAME; \
  \
-darray_##TYPE_NAME initialize_darray_##TYPE_NAME(u64 reserved) { \
+ARRAY_NAME initialize_##ARRAY_NAME(u64 reserved) { \
   assert(reserved % 2 == 0 && "reserve size must be a multiple of 2"); \
-  darray_##TYPE_NAME r; \
+  ARRAY_NAME r; \
   r.reserved = reserved; \
   r.length = 0; \
   r.data = malloc(r.reserved * sizeof(TYPE)); \
@@ -23,11 +23,11 @@ darray_##TYPE_NAME initialize_darray_##TYPE_NAME(u64 reserved) { \
   return r; \
 } \
  \
-u64 darray_##TYPE_NAME##_size(darray_##TYPE_NAME arr) { \
+u64 ARRAY_NAME##_size(ARRAY_NAME arr) { \
   return arr.length * sizeof(TYPE); \
 } \
  \
-void darray_##TYPE_NAME##_push(darray_##TYPE_NAME *arr, TYPE push_value) { \
+void ARRAY_NAME##_push(ARRAY_NAME *arr, TYPE push_value) { \
   if(arr->length == arr->reserved) { \
     arr->reserved += arr->reserved / 2; \
     arr->data = realloc(arr->data, arr->reserved * sizeof(TYPE)); \
@@ -37,12 +37,12 @@ void darray_##TYPE_NAME##_push(darray_##TYPE_NAME *arr, TYPE push_value) { \
   arr->length++; \
 } \
  \
-TYPE darray_##TYPE_NAME##_pop(darray_##TYPE_NAME *arr) { \
+TYPE ARRAY_NAME##_pop(ARRAY_NAME *arr) { \
   assert(arr->length > 0 && "failed to pop; dynamic array has 0 elements"); \
   arr->length--; \
   return arr->data[arr->length]; \
 }
 
-// End of huge GENERATE_DARRAY_TYPE macro
+// End of GENERATE_DARRAY_TYPE macro
 
 #endif
