@@ -6,14 +6,21 @@
 
 #include "integer.h"
 
-#define GENERATE_DARRAY_TYPE(TYPE,ARRAY_NAME) \
+#define GENERATE_DARRAY_HEADER(TYPE,ARRAY_NAME) \
 typedef struct ARRAY_NAME { \
   u64 reserved; \
   u64 length; \
   TYPE *data; \
 } ARRAY_NAME; \
+ARRAY_NAME init_##ARRAY_NAME(u64 reserved); \
+u64 ARRAY_NAME##_size(ARRAY_NAME arr); \
+void ARRAY_NAME##_push(ARRAY_NAME *arr, TYPE push_value); \
+TYPE ARRAY_NAME##_pop(ARRAY_NAME *arr)
+
+
+#define GENERATE_DARRAY_FUNCTIONS(TYPE, ARRAY_NAME) \
  \
-ARRAY_NAME initialize_##ARRAY_NAME(u64 reserved) { \
+ARRAY_NAME init_##ARRAY_NAME(u64 reserved) { \
   assert(reserved % 2 == 0 && "reserve size must be a multiple of 2"); \
   ARRAY_NAME r; \
   r.reserved = reserved; \
@@ -43,6 +50,6 @@ TYPE ARRAY_NAME##_pop(ARRAY_NAME *arr) { \
   return arr->data[arr->length]; \
 }
 
-// End of GENERATE_DARRAY_TYPE macro
+
 
 #endif
