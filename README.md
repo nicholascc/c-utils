@@ -28,4 +28,4 @@ TYPE DARRAY_NAME_push(DARRAY_NAME *arr); // Removes an element from the end of t
 
 `GENERATE_DARRAY_HEADER` generates the struct definition and function headers, while `GENERATE_DARRAY_FUNCTIONS` generates the C code for the functions.
 
-###### Note: `darray.h` depends upon `integer.h`.
+###### Note: `darray.h` includes upon `integer.h`.
