@@ -12,12 +12,12 @@ A generic implementation of a dynamic array, along with some functions for inter
 
 ```c
 typedef struct DARRAY_NAME {
-  u64 reserved; // Amount of space reserved (in terms of elements, not bytes)
-  u64 length; // Amount of elements in array (not size in bytes)
+  u32 reserved; // Amount of space reserved (in terms of elements, not bytes)
+  u32 length; // Amount of elements in array (not size in bytes)
   TYPE *data;
 } DARRAY_NAME;
 
-darray_TYPE initialize_DARRAY_NAME(u64 reserved); // Initializes the array
+darray_TYPE initialize_DARRAY_NAME(u32 reserved); // Initializes the array
 
 u64 DARRAY_NAME_size(DARRAY_NAME arr); // Gets the size of the array (length * sizeof(TYPE))
 
