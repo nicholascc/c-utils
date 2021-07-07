@@ -17,7 +17,7 @@ typedef struct DARRAY_NAME {
   TYPE *data;
 } DARRAY_NAME;
 
-darray_TYPE initialize_DARRAY_NAME(u32 reserved); // Initializes the array
+DARRAY_NAME initialize_DARRAY_NAME(u32 reserved); // Initializes the array
 
 u64 DARRAY_NAME_size(DARRAY_NAME arr); // Gets the size of the array (length * sizeof(TYPE))
 
